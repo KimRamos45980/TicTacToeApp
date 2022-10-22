@@ -2,4 +2,14 @@
     <string name="app_name">TicTacToeApp</string>
     <string name="TextView">Player X\'s Turn</string>
     <string name="NewGame">New Game</string>
+
+    <string name="TopLeftButton">X</string>
+    <string name="TopCenterButton">O</string>
+    <string name="TopRightButton">X</string>
+    <string name="MiddleLeftButton">X</string>
+    <string name="MiddleCenterButton">O</string>
+    <string name="MiddleRightButton">X</string>
+    <string name="BottomLeftButton">O</string>
+    <string name="BottomCenterButton">O</string>
+    <string name="BottomRightButton">X</string>
 </resources>
