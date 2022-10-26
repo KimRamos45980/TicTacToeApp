@@ -58,6 +58,72 @@ class MainActivity : AppCompatActivity() {
                 playerTurn.text = getString(R.string.TextView,player)
             }
         }
+
+
+        topCenterButton.setOnClickListener {
+            if (topCenterButton.text.equals("")) {
+                topCenterButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        topRightButton.setOnClickListener {
+            if (topRightButton.text.equals("")) {
+                topRightButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        middleLeftButton.setOnClickListener {
+            if (middleLeftButton.text.equals("")) {
+                middleLeftButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        middleCenterButton.setOnClickListener {
+            if (middleCenterButton.text.equals("")) {
+                middleCenterButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        middleRightButton.setOnClickListener {
+            if (middleRightButton.text.equals("")) {
+                middleRightButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        bottomLeftButton.setOnClickListener {
+            if (bottomLeftButton.text.equals("")) {
+                bottomLeftButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        bottomCenterButton.setOnClickListener {
+            if (bottomCenterButton.text.equals("")) {
+                bottomCenterButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
+        bottomRightButton.setOnClickListener {
+            if (bottomRightButton.text.equals("")) {
+                bottomRightButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+
     }
 
     private fun changePlayer(turn: String): String {
