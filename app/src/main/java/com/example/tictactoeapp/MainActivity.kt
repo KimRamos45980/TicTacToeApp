@@ -52,78 +52,49 @@ class MainActivity : AppCompatActivity() {
 
         // Button click events
         topLeftButton.setOnClickListener {
-            if (topLeftButton.text.equals("")) {
-                topLeftButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(topLeftButton, player, playerTurn)
         }
 
-
         topCenterButton.setOnClickListener {
-            if (topCenterButton.text.equals("")) {
-                topCenterButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(topCenterButton, player, playerTurn)
         }
 
         topRightButton.setOnClickListener {
-            if (topRightButton.text.equals("")) {
-                topRightButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(topRightButton, player, playerTurn)
         }
 
         middleLeftButton.setOnClickListener {
-            if (middleLeftButton.text.equals("")) {
-                middleLeftButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(middleLeftButton, player, playerTurn)
         }
 
         middleCenterButton.setOnClickListener {
-            if (middleCenterButton.text.equals("")) {
-                middleCenterButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(middleCenterButton, player, playerTurn)
         }
 
         middleRightButton.setOnClickListener {
-            if (middleRightButton.text.equals("")) {
-                middleRightButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(middleRightButton, player, playerTurn)
         }
 
         bottomLeftButton.setOnClickListener {
-            if (bottomLeftButton.text.equals("")) {
-                bottomLeftButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(bottomLeftButton, player, playerTurn)
         }
 
         bottomCenterButton.setOnClickListener {
-            if (bottomCenterButton.text.equals("")) {
-                bottomCenterButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(bottomCenterButton, player, playerTurn)
         }
 
         bottomRightButton.setOnClickListener {
-            if (bottomRightButton.text.equals("")) {
-                bottomRightButton.text = player
-                player = changePlayer(player)
-                playerTurn.text = getString(R.string.TextView,player)
-            }
+            changeButtonText(bottomRightButton, player, playerTurn)
         }
 
+    }
+
+    private fun changeButtonText(button: Button, player: String, playerTurn: TextView) {
+        if (button.text.equals("")) {
+            button.text = player
+            changePlayer(player)
+            playerTurn.text = getString(R.string.TextView, player)
+        }
     }
 
     private fun changePlayer(turn: String): String {
