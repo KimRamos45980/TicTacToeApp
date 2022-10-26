@@ -49,5 +49,24 @@ class MainActivity : AppCompatActivity() {
                 button.text = ""
             }
         }
+
+        // Button click events
+        topLeftButton.setOnClickListener {
+            if (topLeftButton.text.equals("")) {
+                topLeftButton.text = player
+                player = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView,player)
+            }
+        }
+    }
+
+    private fun changePlayer(turn: String): String {
+        var changeTurn = turn
+        changeTurn = if (changeTurn == "X") {
+            "O"
+        } else {
+            "X"
+        }
+        return changeTurn
     }
 }
