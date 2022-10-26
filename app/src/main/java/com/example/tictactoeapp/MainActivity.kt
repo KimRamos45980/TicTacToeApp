@@ -52,49 +52,51 @@ class MainActivity : AppCompatActivity() {
 
         // Button click events
         topLeftButton.setOnClickListener {
-            changeButtonText(topLeftButton, player, playerTurn)
+            player = changeButtonText(topLeftButton, player, playerTurn)
         }
 
         topCenterButton.setOnClickListener {
-            changeButtonText(topCenterButton, player, playerTurn)
+            player = changeButtonText(topCenterButton, player, playerTurn)
         }
 
         topRightButton.setOnClickListener {
-            changeButtonText(topRightButton, player, playerTurn)
+            player = changeButtonText(topRightButton, player, playerTurn)
         }
 
         middleLeftButton.setOnClickListener {
-            changeButtonText(middleLeftButton, player, playerTurn)
+            player = changeButtonText(middleLeftButton, player, playerTurn)
         }
 
         middleCenterButton.setOnClickListener {
-            changeButtonText(middleCenterButton, player, playerTurn)
+            player = changeButtonText(middleCenterButton, player, playerTurn)
         }
 
         middleRightButton.setOnClickListener {
-            changeButtonText(middleRightButton, player, playerTurn)
+            player = changeButtonText(middleRightButton, player, playerTurn)
         }
 
         bottomLeftButton.setOnClickListener {
-            changeButtonText(bottomLeftButton, player, playerTurn)
+            player = changeButtonText(bottomLeftButton, player, playerTurn)
         }
 
         bottomCenterButton.setOnClickListener {
-            changeButtonText(bottomCenterButton, player, playerTurn)
+            player = changeButtonText(bottomCenterButton, player, playerTurn)
         }
 
         bottomRightButton.setOnClickListener {
-            changeButtonText(bottomRightButton, player, playerTurn)
+            player = changeButtonText(bottomRightButton, player, playerTurn)
         }
 
     }
 
-    private fun changeButtonText(button: Button, player: String, playerTurn: TextView) {
+    private fun changeButtonText(button: Button, player: String, playerTurn: TextView): String {
+        var playerChange = player
         if (button.text.equals("")) {
             button.text = player
-            changePlayer(player)
-            playerTurn.text = getString(R.string.TextView, player)
+            playerChange = changePlayer(player)
+            playerTurn.text = getString(R.string.TextView, playerChange)
         }
+        return playerChange
     }
 
     private fun changePlayer(turn: String): String {
