@@ -43,8 +43,10 @@ class MainActivity : AppCompatActivity() {
             bottomRightButton
         )
 
-        // Array of ints to indicate the board, TopLeft = index 0 -> TopRight = index 3, etc.
-        val board: IntArray = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
+        // Array of ints to indicate the board, TopLeft = index 0 -> TopRight = index 2, etc.
+        // Set to random values not including 1/2 or similar values
+        // Done to not conflict with checkWinner()
+        val board: IntArray = intArrayOf(3, 4, 5, 6, 7, 8, 9, 10, 11)
 
         // New game button reset
         newGame.setOnClickListener {
@@ -53,6 +55,7 @@ class MainActivity : AppCompatActivity() {
             for (button in buttons) {
                 button.text = ""
             }
+            gameEnd = false
         }
 
         // Button click events
@@ -152,7 +155,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeIndexValue(board: IntArray, button: Int, player: String) {
-        if (board[button] == 0) {
+        if (board[button] != 1 || board[button] != 2) {
             if (player == "X") {
                 board[button] = 1
                 Log.i("BoardValues", board.contentToString())
@@ -164,8 +167,36 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkWinner(board: IntArray, player: String, playerTurn: TextView) : Boolean {
-        if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
-            val won = "Player $player Won!"
+        val won = "Player $player Won!"
+        if (board[0] == board[1] && board[1] == board[2]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[3] == board[4] && board[4] == board[5]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[6] == board[7] && board[7] == board[8]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[0] == board[3] && board[3] == board[6]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[1] == board[4] && board[4] == board[7]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[2] == board[5] && board[5] == board[8]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[0] == board[4] && board[4] == board[8]) {
+            playerTurn.text = won
+            return true
+        }
+        else if (board[2] == board[4] && board[4] == board[6]) {
             playerTurn.text = won
             return true
         }
