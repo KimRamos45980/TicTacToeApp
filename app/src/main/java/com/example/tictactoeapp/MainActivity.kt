@@ -44,9 +44,8 @@ class MainActivity : AppCompatActivity() {
         )
 
         // Array of ints to indicate the board, TopLeft = index 0 -> TopRight = index 2, etc.
-        // Set to random values not including 1/2 or similar values
-        // Done to not conflict with checkWinner()
-        val board: IntArray = intArrayOf(3, 4, 5, 6, 7, 8, 9, 10, 11)
+        // Set to random values not including 0/1 or similar values done to not conflict with checkWinner()
+        val board: IntArray = intArrayOf(2, 3, 4, 5, 6, 7, 8, 9, 10)
 
         // New game button reset
         newGame.setOnClickListener {
@@ -55,6 +54,10 @@ class MainActivity : AppCompatActivity() {
             for (button in buttons) {
                 button.text = ""
             }
+            for (i in board.indices) {
+                board[i] = (i + 2)
+            }
+            Log.i("BoardValues", board.contentToString())
             gameEnd = false
         }
 
@@ -155,12 +158,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeIndexValue(board: IntArray, button: Int, player: String) {
-        if (board[button] != 1 || board[button] != 2) {
+        if (board[button] != 0 || board[button] != 1) {
             if (player == "X") {
-                board[button] = 1
+                board[button] = 0
                 Log.i("BoardValues", board.contentToString())
             } else {
-                board[button] = 2
+                board[button] = 1
                 Log.i("BoardValues", board.contentToString())
             }
         }
@@ -202,5 +205,4 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
-
 }
