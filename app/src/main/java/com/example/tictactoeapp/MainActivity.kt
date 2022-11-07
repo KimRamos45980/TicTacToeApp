@@ -1,6 +1,7 @@
 package com.example.tictactoeapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity() {
             bottomRightButton
         )
 
+        // Array of ints to indicate the board, TopLeft = index 0 -> TopRight = index 3, etc.
+        val board: IntArray = intArrayOf(0, 0, 0, 0, 0, 0, 0, 0, 0)
+
         // New game button reset
         newGame.setOnClickListener {
             playerTurn.text = getString(R.string.TextView, "X")
@@ -52,41 +56,49 @@ class MainActivity : AppCompatActivity() {
 
         // Button click events
         topLeftButton.setOnClickListener {
+            changeIndexValue(board, 0, player)
             player = changeButtonText(topLeftButton, player, playerTurn)
         }
 
         topCenterButton.setOnClickListener {
+            changeIndexValue(board, 1, player)
             player = changeButtonText(topCenterButton, player, playerTurn)
         }
 
         topRightButton.setOnClickListener {
+            changeIndexValue(board, 2, player)
             player = changeButtonText(topRightButton, player, playerTurn)
         }
 
         middleLeftButton.setOnClickListener {
+            changeIndexValue(board, 3, player)
             player = changeButtonText(middleLeftButton, player, playerTurn)
         }
 
         middleCenterButton.setOnClickListener {
+            changeIndexValue(board, 4, player)
             player = changeButtonText(middleCenterButton, player, playerTurn)
         }
 
         middleRightButton.setOnClickListener {
+            changeIndexValue(board, 5, player)
             player = changeButtonText(middleRightButton, player, playerTurn)
         }
 
         bottomLeftButton.setOnClickListener {
+            changeIndexValue(board, 6, player)
             player = changeButtonText(bottomLeftButton, player, playerTurn)
         }
 
         bottomCenterButton.setOnClickListener {
+            changeIndexValue(board, 7, player)
             player = changeButtonText(bottomCenterButton, player, playerTurn)
         }
 
         bottomRightButton.setOnClickListener {
+            changeIndexValue(board, 8, player)
             player = changeButtonText(bottomRightButton, player, playerTurn)
         }
-
     }
 
     private fun changeButtonText(button: Button, player: String, playerTurn: TextView): String {
@@ -107,5 +119,16 @@ class MainActivity : AppCompatActivity() {
             "X"
         }
         return changeTurn
+    }
+
+    private fun changeIndexValue(board: IntArray, button: Int, player: String) {
+        if (player == "X") {
+            board[button] = 1
+            Log.i("Check", board.contentToString())
+        }
+        else {
+            board[button] = 2
+            Log.i("Check", board.contentToString())
+        }
     }
 }
