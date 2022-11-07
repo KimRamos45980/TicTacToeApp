@@ -16,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         playerTurn.text = getString(R.string.TextView, "X")
         // Holds which player letter's turn it is
         var player = "X"
+        var gameEnd = false
 
         // All buttons on screen assigned to a variable
         val topLeftButton = findViewById<Button>(R.id.top_left_button)
@@ -56,57 +57,86 @@ class MainActivity : AppCompatActivity() {
 
         // Button click events
         topLeftButton.setOnClickListener {
-            changeIndexValue(board, 0, player)
-            player = changeButtonText(topLeftButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 0, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(topLeftButton, player, playerTurn, gameEnd)
+            }
         }
 
         topCenterButton.setOnClickListener {
-            changeIndexValue(board, 1, player)
-            player = changeButtonText(topCenterButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 1, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(topCenterButton, player, playerTurn, gameEnd)
+            }
         }
 
         topRightButton.setOnClickListener {
-            changeIndexValue(board, 2, player)
-            player = changeButtonText(topRightButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 2, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(topRightButton, player, playerTurn, gameEnd)
+            }
         }
 
         middleLeftButton.setOnClickListener {
-            changeIndexValue(board, 3, player)
-            player = changeButtonText(middleLeftButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 3, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(middleLeftButton, player, playerTurn, gameEnd)
+            }
         }
 
         middleCenterButton.setOnClickListener {
-            changeIndexValue(board, 4, player)
-            player = changeButtonText(middleCenterButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 4, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(middleCenterButton, player, playerTurn, gameEnd)
+            }
         }
 
         middleRightButton.setOnClickListener {
-            changeIndexValue(board, 5, player)
-            player = changeButtonText(middleRightButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 5, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(middleRightButton, player, playerTurn, gameEnd)
+            }
         }
 
         bottomLeftButton.setOnClickListener {
-            changeIndexValue(board, 6, player)
-            player = changeButtonText(bottomLeftButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 6, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(bottomLeftButton, player, playerTurn, gameEnd)
+            }
         }
 
         bottomCenterButton.setOnClickListener {
-            changeIndexValue(board, 7, player)
-            player = changeButtonText(bottomCenterButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 7, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(bottomCenterButton, player, playerTurn, gameEnd)
+            }
         }
 
         bottomRightButton.setOnClickListener {
-            changeIndexValue(board, 8, player)
-            player = changeButtonText(bottomRightButton, player, playerTurn)
+            if (!gameEnd) {
+                changeIndexValue(board, 8, player)
+                gameEnd = checkWinner(board, player, playerTurn)
+                player = changeButtonText(bottomRightButton, player, playerTurn, gameEnd)
+            }
         }
     }
 
-    private fun changeButtonText(button: Button, player: String, playerTurn: TextView): String {
+    private fun changeButtonText(button: Button, player: String, playerTurn: TextView, gameEnd: Boolean): String {
         var playerChange = player
         if (button.text.equals("")) {
             button.text = player
-            playerChange = changePlayer(player)
-            playerTurn.text = getString(R.string.TextView, playerChange)
+            if (!gameEnd) {
+                playerChange = changePlayer(player)
+                playerTurn.text = getString(R.string.TextView, playerChange)
+            }
         }
         return playerChange
     }
@@ -122,13 +152,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeIndexValue(board: IntArray, button: Int, player: String) {
-        if (player == "X") {
-            board[button] = 1
-            Log.i("Check", board.contentToString())
-        }
-        else {
-            board[button] = 2
-            Log.i("Check", board.contentToString())
+        if (board[button] == 0) {
+            if (player == "X") {
+                board[button] = 1
+                Log.i("BoardValues", board.contentToString())
+            } else {
+                board[button] = 2
+                Log.i("BoardValues", board.contentToString())
+            }
         }
     }
+
+    private fun checkWinner(board: IntArray, player: String, playerTurn: TextView) : Boolean {
+        if (board[6] == 1 && board[7] == 1 && board[8] == 1) {
+            val won = "Player $player Won!"
+            playerTurn.text = won
+            return true
+        }
+        return false
+    }
+
 }
